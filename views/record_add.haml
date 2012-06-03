@@ -1,0 +1,42 @@
+%form.form-horizontal{:action => "/record/create", :method => "POST"}
+  %fieldset
+    %legend Create New Record
+    .control-group
+      %label.control-label{:for => "zone"} Zone
+      .controls
+        %select#zone.input-xlarge{:name => "zone"}
+          - @zones.each do |zone|
+            %option{:value => "#{zone.id}"}= zone.origin
+      %br
+      %label.control-label{:for => "name"} Name
+      .controls
+        %input#name.input-xlarge{:type => "text", :placeholder => "alias", :name => "name"}
+          %p.help-block The name that this RR describes. Wildcard values such as `*' or `*.sub' are supported, and this field can contain a FQDN or just a hostname. It may contain out-of-zone data if this is a glue record.
+      %br
+      %label.control-label{:for => "type"} Type
+      .controls
+        %select#type.input-small{:name => "type"}
+          %option A
+          %option AAAA
+          %option CNAME
+          %option MX
+          %option NS
+          %option TXT
+      %br
+      %label.control-label{:for => "data"} Data
+      .controls
+        %input#data.input-xlarge{:type => "text", :name => "data"}
+          %p.help-block For A record this should be a destination IP or by CNAME this should be the destination name or FQDN.
+      %br
+      %label.control-label{:for => "aux"} AUX
+      .controls
+        %input#aux.input-small{:type => "text", :placeholder => "0", :name => "aux"}
+          %p.help-block An auxillary numeric value in addition to data. For `MX' records, this field specifies the preference. For `SRV' records, this field specifies the priority.
+      %br
+      %label.control-label{:for => "ttl"} TTL
+      .controls
+        %input#ttl.input-small{:type => "text", :placeholder => "86400", :name => "alias"}
+          %p.help-block The number of seconds that this zone may be cached before the source of the information should again be consulted. Zero value means no caching.
+
+
+    %button.btn{:type => "submit"} Create Record

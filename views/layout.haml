@@ -1,0 +1,45 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}/
+    %title MyDNSui
+    %meta{:content => "", :name => "description"}/
+    %meta{:content => "david noelte", :name => "author"}/
+    /[if lt IE 9]
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+
+    %link{:href => "/bootstrap/css/bootstrap.min.css", :rel => "stylesheet"}/
+    :css
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+        %link{:href => "/bootstrap/css/bootstrap-responsive.min.css", :rel => "stylesheet"}/
+
+    %link{:href => "images/favicon.ico", :rel => "shortcut icon"}/
+    %link{:href => "/bootstrap/img/apple-touch-icon.png", :rel => "apple-touch-icon"}/
+    %link{:href => "/bootstrap/img/apple-touch-icon-72x72.png", :rel => "apple-touch-icon", :sizes => "72x72"}/
+    %link{:href => "/bootstrap/img/apple-touch-icon-114x114.png", :rel => "apple-touch-icon", :sizes => "114x114"}/
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        .container
+          %a.btn.btn-navbar{"data-target" => ".nav-collapse", "data-toggle" => "collapse"}
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %a.brand{:href => "#"} MyDNSui
+          .nav-collapse
+            %ul.nav
+              %li.active
+                %a{:href => "#"} Home
+              %li
+                %a{:href => "/zone"} Dns
+              %li
+                %a{:href => "#about"} About
+
+    .container
+      =yield
+
+    %script{:src => "/js/jquery.min.js"}
+    %script{:src => "/bootstrap/js/bootstrap.min.js"}
+

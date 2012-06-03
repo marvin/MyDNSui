@@ -1,0 +1,33 @@
+.row
+  .span8
+    %h1= @zone.origin + " Recors"
+  .span4
+    %a.btn.btn-primary{:href => "/record/add"} Create Record
+
+%table.table.table-striped.table-bordered.table-condensed
+  %thead
+    %tr
+      %th.span2 Name
+      %th.span1 Type
+      %th.span4 Data
+      %th.span1 Prio
+      %th.span2 TTL
+      %th.span2 Actions
+  %tbody
+  - if @records
+    - @records.each do |record| 
+      %tr
+        %td= record.name
+        %td= record.type
+        %td= record.data
+        %td= record.aux
+        %td= record.ttl
+        %td
+          .btn-group
+            %a.btn{:href => "/record/#{record.id}"}
+              %i.icon-th
+            %a.btn{:href => "/record/edit/#{record.id}"}
+              %i.icon-pencil
+            %a.btn{:href => "/record/delete/#{record.id}"}
+              %i.icon-trash
+  

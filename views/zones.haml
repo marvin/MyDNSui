@@ -1,0 +1,26 @@
+.row
+  .span8
+    %h1 Zone List
+  .span4
+    %a.btn.btn-primary{:href => "/zone/add"} Create Zone
+    %a.btn.btn-primary{:href => "/record/add"} Create Record
+
+%table.table.table-striped.table-bordered.table-condensed
+  %thead
+    %tr
+      %th.span10 Zone
+      %th Actions
+  %tbody
+  - if @zones
+    - @zones.each do |zone| 
+      %tr
+        %td= zone.origin
+        %td
+          .btn-group
+            %a.btn{:href => "/zone/#{zone.id}"}
+              %i.icon-th
+            %a.btn{:href => "/zone/edit/#{zone.id}"}
+              %i.icon-pencil
+            %a.btn{:href => "/zone/delete/#{zone.id}"}
+              %i.icon-trash
+  

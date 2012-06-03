@@ -1,0 +1,50 @@
+%form.form-horizontal{:action => "/zone/create", :method => "POST", :enctype => "application/x-www-form-urlencoded"}
+  %fieldset
+    %legend Create New Zone
+    .control-group
+      %label.control-label{:for => "origin"} Origin
+      .controls
+        %input#origin.input-xlarge{:type => "text", :placeholder => "example.com", :name => "origin"}
+          %p.help-block The name of this zone. 
+      %br
+      %label.control-label{:for => "ns"} NS
+      .controls
+        %input#ns.input-xlarge{:type => "text", :placeholder => "primary.domain.com", :name => "ns"}
+          %p.help-block The name of the name server that was the original or primary source of data for this zone.
+      %br
+      %label.control-label{:for => "mbox"} Mailbox
+      .controls
+        %input#mbox.input-xlarge{:type => "text", :placeholder => "postmaster.example.com", :name => "mbox"}
+          %p.help-block A name which specifies the mailbox of the person responsible for this zone.
+      %br
+      %label.control-label{:for => "serial"} Serial
+      .controls
+        %input#serial.input-xlarge{:type => "text", :name => "serial"}
+          %p.help-block Set a serial. Leave blank to generate dynamic timestamp serial.
+      %br
+      %label.control-label{:for => "refresh"} Refresh
+      .controls
+        %input#refresh.input-small{:type => "text", :placeholder => "10800", :name => "refresh"}
+          %p.help-block The number of seconds after which slave nameservers should check to see if this zone has been changed.
+      %br
+      %label.control-label{:for => "retry"} Retry
+      .controls
+        %input#retry.input-small{:type => "text", :placeholder => "3600", :name => "retry"}
+          %p.help-block This specifies the number of seconds a slave nameserver should wait before retrying if it attmepts to transfer this zone but fails.
+      %br
+      %label.control-label{:for => "expire"} Expire
+      .controls
+        %input#expire.input-small{:type => "text", :placeholder => "60400", :name => "expire"}
+          %p.help-block If for expire seconds the primary server cannot be reached, all information about the zone is invalidated on the secondary servers.
+      %br
+      %label.control-label{:for => "minimum"} Minimum
+      .controls
+        %input#minimum.input-small{:type => "text", :placeholder => "86400", :name => "minimum"}
+          %p.help-block The minimum TTL field that should be exported with any RR from this zone. 
+      %br
+      %label.control-label{:for => "ttl"} TTL
+      .controls
+        %input#ttl.input-small{:type => "text", :placeholder => "86400", :name => "ttl"}
+          %p.help-block The number of seconds that this zone may be cached before the source of the information should again be consulted. Zero value means no caching.
+
+    %button.btn{:type => "submit"} Create Zone

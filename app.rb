@@ -78,10 +78,10 @@ post '/zone/create' do
 
   if zone.save
     status 201
-    redirect '/zones'
+    redirect '/zone'
   else
     status 412
-    redirect '/zones'
+    redirect '/zone'
   end
 end
 
@@ -97,10 +97,30 @@ get '/zone/edit/:id' do
   haml :zone_edit
 end
 
-post '/zone/update/:name' do
+post '/zone/update/:id' do
+  soa = Soa.get(params[:id])
+  soa.origin = params[:origin]
+  soa.ns = params[:ns]
+  soa.mbox = params[:mbox]
+  soa.serial = params[:serial]
+  soa.refresh = params[:refresh]
+  soa.retry = params[:retry]
+  soa.expire = params[:expire]
+  soa.minimum = params[:minimum]
+  soa.ttl = params[:ttl]
+
+  if soa.save
+    status 201
+    redirect '/zone/' + params[:id]
+  else
+    status 412
+    redirect '/zone/edit/' + params[:id]
+  end
 end
 # zone delete
 get '/zone/delete/:id' do
+  Soa.get(params[:id]).destroy
+  redirect '/zone'
 end
 
 ## record methods
@@ -129,14 +149,15 @@ post '/record/create' do
 end
 
 # record read
-get '/record/:name' do
+get '/record/:id' do
 end
 # record update
-get '/record/edit/:name' do
+get '/record/edit/:id' do
 end
 
-post '/record/update/:name' do
+post '/record/update/:id' do
 end
 # record delete
-get '/record/delete/:name' do
+get '/record/delete/:id' do
+  Rr.get(params[:id]).destroy
 end

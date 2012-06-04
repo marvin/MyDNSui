@@ -1,8 +1,9 @@
 .row
   .span8
-    %h1= @zone.origin + " Recors"
+    %h1= @zone.origin + " Records"
   .span4
     %a.btn.btn-primary{:href => "/record/add"} Create Record
+    %a.btn.btn-primary{:href => "/zone/edit/#{@zone.id}"} Edit Zone
 
 %table.table.table-striped.table-bordered.table-condensed
   %thead

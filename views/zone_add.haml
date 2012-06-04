@@ -4,17 +4,17 @@
     .control-group
       %label.control-label{:for => "origin"} Origin
       .controls
-        %input#origin.input-xlarge{:type => "text", :placeholder => "example.com", :name => "origin"}
+        %input#origin.input-xlarge{:type => "text", :placeholder => "example.com.", :name => "origin"}
           %p.help-block The name of this zone. 
       %br
       %label.control-label{:for => "ns"} NS
       .controls
-        %input#ns.input-xlarge{:type => "text", :placeholder => "primary.domain.com", :name => "ns"}
+        %input#ns.input-xlarge{:type => "text", :placeholder => "primary", :name => "ns"}
           %p.help-block The name of the name server that was the original or primary source of data for this zone.
       %br
       %label.control-label{:for => "mbox"} Mailbox
       .controls
-        %input#mbox.input-xlarge{:type => "text", :placeholder => "postmaster.example.com", :name => "mbox"}
+        %input#mbox.input-xlarge{:type => "text", :placeholder => "postmaster", :name => "mbox"}
           %p.help-block A name which specifies the mailbox of the person responsible for this zone.
       %br
       %label.control-label{:for => "serial"} Serial
